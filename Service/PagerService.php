@@ -12,6 +12,7 @@ use Gloomy\PagerBundle\Pager\Wrapper\ArrayWrapper;
 use Gloomy\PagerBundle\Pager\Wrapper\NullWrapper;
 use Gloomy\PagerBundle\Pager\Wrapper\QueryBuilderWrapper;
 use Gloomy\PagerBundle\Pager\Wrapper\EntityWrapper;
+use Gloomy\PagerBundle\Pager\Wrapper\MongoDBWrapper;
 
 class PagerService {
 
@@ -33,6 +34,9 @@ class PagerService {
         if (!$wrapper instanceof Wrapper) {
             if ($wrapper instanceof QueryBuilder) {
                 $wrapper    = new QueryBuilderWrapper($wrapper);
+            }
+            elseif ($wrapper instanceof QueryBuilder) {
+                $wrapper    = new MongoDBWrapper($wrapper);
             }
             elseif (is_array($wrapper)) {
                 $wrapper    = new ArrayWrapper($wrapper);
