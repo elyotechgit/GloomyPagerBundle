@@ -35,7 +35,7 @@ class PagerService {
             if ($wrapper instanceof QueryBuilder) {
                 $wrapper    = new QueryBuilderWrapper($wrapper);
             }
-            elseif ($wrapper instanceof QueryBuilder) {
+            elseif ($wrapper instanceof Builder) {
                 $wrapper    = new MongoDBWrapper($wrapper);
             }
             elseif (is_array($wrapper)) {
